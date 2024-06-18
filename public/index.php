@@ -17,7 +17,7 @@ $books = $bookController->getAllBooks();
 <body>
     <?php include '../templates/header.php'; ?>
     <div class="container">
-        <h1 class="book-library-h1">Book Library</h1>
+        <h1>Book Library</h1>
         <div class="book-list">
             <?php foreach ($books as $book): ?>
                         <div class="book-item">
