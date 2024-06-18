@@ -20,7 +20,7 @@ $reviews = $reviewController->getReviews($book_id);
     <link rel="stylesheet" href="../assets/css/style.css">
     <script src="../assets/js/script.js" defer></script>
 </head>
-<body>
+<body class="review-page">
     <?php include '../templates/header.php'; ?>
     <div class="container">
         <h1><?php echo htmlspecialchars($book['title']); ?></h1>

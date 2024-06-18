@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Edit Review</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-<body>
+<body class="edit-review-page">
     <?php include '../templates/header.php'; ?>
     <div class="container">
         <h1>Edit your review for <span class="book-title">"<?php echo htmlspecialchars($book['title']); ?>"</span></h1>

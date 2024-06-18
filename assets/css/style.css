@@ -363,3 +363,14 @@ footer {
     width: 34.2%;
     margin: 0 auto;
 }
+
+/* Styles specific to the review page */
+.review-page .container, .edit-review-page .container {
+    background-color: whitesmoke;
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
+    margin: 0 auto;
+    flex: 1;
+    justify-content: center;
+}
