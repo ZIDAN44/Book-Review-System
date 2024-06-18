@@ -9,6 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $controller = new UserController();
 $userProfile = $controller->getUserProfile($_SESSION['user_id']);
+$userReviews = $controller->getUserReviews($_SESSION['user_id']);
 ?>
 
 <!DOCTYPE html>
@@ -32,6 +33,22 @@ $userProfile = $controller->getUserProfile($_SESSION['user_id']);
                 </ul>
         <?php else: ?>
                 <p>User not found.</p>
+        <?php endif; ?>
+
+        <h2>Books Reviewed</h2>
+        <?php if ($userReviews): ?>
+                <ul>
+                    <?php foreach ($userReviews as $review): ?>
+                            <li>
+                                <h3><?php echo htmlspecialchars($review['title']); ?></h3>
+                                <p><strong>Author:</strong> <?php echo htmlspecialchars($review['author']); ?></p>
+                                <p><strong>Rating:</strong> <?php echo htmlspecialchars($review['rating']); ?>/5</p>
+                                <p><?php echo htmlspecialchars($review['review']); ?></p>
+                            </li>
+                    <?php endforeach; ?>
+                </ul>
+        <?php else: ?>
+                <p>No reviews found.</p>
         <?php endif; ?>
     </div>
     <?php include '../templates/footer.php'; ?>

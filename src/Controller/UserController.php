@@ -69,4 +69,22 @@ class UserController
             ShowError::show404Page();
         }
     }
+
+    public function getUserReviews($userId)
+    {
+        global $pdo;
+        try {
+            $stmt = $pdo->prepare('
+            SELECT b.id, b.title, b.author, r.review, r.rating 
+            FROM reviews r 
+            JOIN books b ON r.book_id = b.id 
+            WHERE r.user_id = ?
+        ');
+            $stmt->execute([$userId]);
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            BookLogger::logError($e);
+            ShowError::show404Page();
+        }
+    }
 }
