@@ -12,10 +12,10 @@ $controller->register();
     <title>Register</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-<body class="login-page">
+<body class="register-page">
     <?php include '../templates/header.php'; ?>
     <div class="container">        
-        <div class="login-container">
+        <div class="register-container">
             <form method="POST">
                 <input type="text" name="username" placeholder="Username" required>
                 <input type="password" name="password" placeholder="Password" required>

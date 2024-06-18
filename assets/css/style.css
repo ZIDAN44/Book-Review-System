@@ -54,7 +54,7 @@ header .welcome {
     font-size: 16px;
 }
 
-.login-container {
+.login-container, .register-container {
     background: white;
     padding: 40px;
     border-radius: 8px;
@@ -239,7 +239,7 @@ footer {
 
 /* Make it responsive */
 @media (max-width: 600px) {
-    .login-container {
+    .login-container, .register-container {
         padding: 20px;
     }
 
@@ -325,7 +325,7 @@ footer {
 }
 
 /* Styles specific to the login/register page */
-.login-page .container {
+.login-page .container, .register-page .container {
     background-color: none;
     width: 0;
     max-width: 0;
@@ -335,7 +335,7 @@ footer {
     justify-content: center;
 }
 
-.login-page header {
+.login-page header, .register-page header {
     background: #E3C8C0;
     padding: 10px 20px;
     color: #4A4A4A;
@@ -346,22 +346,22 @@ footer {
     margin: 0 auto;
 }
 
-.login-page header nav a {
+.login-page header nav a, .register-page header nav a {
     color: #4A4A4A;
     text-decoration: none;
     margin: 0 10px;
     font-weight: bold;
 }
 
-.login-page header nav a:hover {
+.login-page header nav a:hover, .register-page header nav a:hover {
     text-decoration: underline;
 }
 
-.login-page header .welcome {
+.login-page header .welcome, .register-page header .welcome {
     font-size: 16px;
 }
 
-.login-page footer {
+.login-page footer, .register-page footer {
     background: #E3C8C0;
     color: #4A4A4A;
     text-align: center;
