@@ -250,6 +250,19 @@ footer {
     button {
         font-size: 14px;
     }
+
+    .profile-container {
+        padding: 10px;
+    }
+
+    .profile-card h1, .reviews-section h2 {
+        font-size: 20px;
+    }
+
+    .profile-card li, .review-item {
+        margin-bottom: 10px;
+        padding: 10px;
+    }
 }
 
 .review-form {
@@ -377,4 +390,53 @@ footer {
     margin: 0 auto;
     flex: 1;
     justify-content: center;
+}
+
+/* Styles specific to the profile page */
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card, .reviews-section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card h1, .reviews-section h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #007bff;
+}
+
+.profile-card ul, .review-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.profile-card li, .review-item {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-item h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #007bff;
+}
+
+.review-item p {
+    font-size: 14px;
+    color: #555;
 }
