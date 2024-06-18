@@ -56,4 +56,17 @@ class UserController
         session_destroy();
         header('Location: login.php');
     }
+
+    public function getUserProfile($userId)
+    {
+        global $pdo;
+        try {
+            $stmt = $pdo->prepare('SELECT id, username, email, created_at FROM users WHERE id = ?');
+            $stmt->execute([$userId]);
+            return $stmt->fetch();
+        } catch (PDOException $e) {
+            BookLogger::logError($e);
+            ShowError::show404Page();
+        }
+    }
 }
