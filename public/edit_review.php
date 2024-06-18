@@ -11,26 +11,13 @@ if (!isset($_SESSION['user_id'])) {
 $reviewController = new ReviewController();
 $bookController = new BookController();
 
-// Determine the context from which edit_review.php is accessed
 if (isset($_GET['book_id'])) {
-    // Accessed from book.php to edit a specific book review
     $book_id = $_GET['book_id'];
     $userReview = $reviewController->getUserReview($book_id, $_SESSION['user_id']);
     $book = $bookController->getBook($book_id);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_POST['book_id'] = $book_id;
-        $reviewController->updateReview($_POST);
-        exit();
-    }
-} elseif (isset($_GET['review_id'])) {
-    // Accessed from profile.php to edit a user's general review
-    $review_id = $_GET['review_id'];
-    $userReview = $reviewController->getReviewById($review_id);
-    $book = $bookController->getBook($userReview['book_id']); // Get book details for display
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $_POST['review_id'] = $review_id;
         $reviewController->updateReview($_POST);
         exit();
     }

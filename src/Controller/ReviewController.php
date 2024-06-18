@@ -90,17 +90,4 @@ class ReviewController
             ShowError::show404Page();
         }
     }
-
-    public function getReviewById($review_id)
-    {
-        global $pdo;
-        try {
-            $stmt = $pdo->prepare('SELECT * FROM reviews WHERE id = ?');
-            $stmt->execute([$review_id]);
-            return $stmt->fetch();
-        } catch (PDOException $e) {
-            BookLogger::logError($e);
-            ShowError::show404Page();
-        }
-    }
 }
