@@ -45,6 +45,26 @@ class ReviewController
         }
     }
 
+    public function updateReview($data)
+    {
+        global $pdo;
+        try {
+            $review_id = $data['review_id'];
+            $rating = $data['rating'];
+            $review = $data['review'];
+
+            // Update the review
+            $stmt = $pdo->prepare('UPDATE reviews SET rating = ?, review = ?, updated_at = ? WHERE id = ?');
+            $stmt->execute([$rating, $review, date('Y-m-d H:i:s'), $review_id]);
+
+            // Redirect to appropriate page
+            header('Location: book.php?id=' . $data['book_id']);
+        } catch (PDOException $e) {
+            BookLogger::logError($e);
+            ShowError::show404Page();
+        }
+    }
+
     public function getReviews($book_id)
     {
         global $pdo;
@@ -64,6 +84,19 @@ class ReviewController
         try {
             $stmt = $pdo->prepare('SELECT * FROM reviews WHERE book_id = ? AND user_id = ?');
             $stmt->execute([$book_id, $user_id]);
+            return $stmt->fetch();
+        } catch (PDOException $e) {
+            BookLogger::logError($e);
+            ShowError::show404Page();
+        }
+    }
+
+    public function getReviewById($review_id)
+    {
+        global $pdo;
+        try {
+            $stmt = $pdo->prepare('SELECT * FROM reviews WHERE id = ?');
+            $stmt->execute([$review_id]);
             return $stmt->fetch();
         } catch (PDOException $e) {
             BookLogger::logError($e);

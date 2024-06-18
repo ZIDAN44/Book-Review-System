@@ -1,7 +1,7 @@
 <?php
+session_start();
 require '../src/Controller/ReviewController.php';
 require '../src/Controller/BookController.php';
-session_start();
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
@@ -11,15 +11,31 @@ if (!isset($_SESSION['user_id'])) {
 $reviewController = new ReviewController();
 $bookController = new BookController();
 
-$book_id = $_GET['book_id'];
-$user_id = $_SESSION['user_id'];
-$userReview = $reviewController->getUserReview($book_id, $user_id);
+// Determine the context from which edit_review.php is accessed
+if (isset($_GET['book_id'])) {
+    // Accessed from book.php to edit a specific book review
+    $book_id = $_GET['book_id'];
+    $userReview = $reviewController->getUserReview($book_id, $_SESSION['user_id']);
+    $book = $bookController->getBook($book_id);
 
-$book = $bookController->getBook($book_id);
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $_POST['book_id'] = $book_id;
+        $reviewController->updateReview($_POST);
+        exit();
+    }
+} elseif (isset($_GET['review_id'])) {
+    // Accessed from profile.php to edit a user's general review
+    $review_id = $_GET['review_id'];
+    $userReview = $reviewController->getReviewById($review_id);
+    $book = $bookController->getBook($userReview['book_id']); // Get book details for display
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $_POST['book_id'] = $book_id;
-    $reviewController->addReview();
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $_POST['review_id'] = $review_id;
+        $reviewController->updateReview($_POST);
+        exit();
+    }
+} else {
+    header('Location: profile.php');
     exit();
 }
 ?>
@@ -36,7 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <?php include '../templates/header.php'; ?>
     <div class="container">
         <h1>Edit your review for <span class="book-title">"<?php echo htmlspecialchars($book['title']); ?>"</span></h1>
-        <form method="POST" action="edit_review.php?book_id=<?php echo $book_id; ?>">
+        <form method="POST">
+            <input type="hidden" name="book_id" value="<?php echo $book['id']; ?>">
+            <input type="hidden" name="review_id" value="<?php echo $userReview['id']; ?>">
             <div class="review-form">
                 <div class="star-rating-container">
                     <label for="rating">Rating:</label>

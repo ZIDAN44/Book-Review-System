@@ -1,6 +1,7 @@
 <?php
 session_start();
 require '../src/Controller/UserController.php';
+require '../src/Controller/ReviewController.php';
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
@@ -47,6 +48,7 @@ $userReviews = $controller->getUserReviews($_SESSION['user_id']);
                                     <p><strong>Author:</strong> <?php echo htmlspecialchars($review['author']); ?></p>
                                     <p><strong>Rating:</strong> <?php echo htmlspecialchars($review['rating']); ?>/5</p>
                                     <p><?php echo htmlspecialchars($review['review']); ?></p>
+                                    <a href="edit_review.php?review_id=<?php echo $review['id']; ?>">Edit review</a>
                                 </li>
                         <?php endforeach; ?>
                     </ul>
