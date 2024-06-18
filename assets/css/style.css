@@ -1,3 +1,4 @@
+/* General styles for all pages */
 * {
     margin: 0;
     padding: 0;
@@ -10,15 +11,17 @@ html, body {
 }
 
 body {
-    background: #f0f2f5;
+    background: url('../images/background.png') no-repeat center center fixed;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     color: #333;
 }
 
 .container {
+    background-color: rgba(255, 255, 255, 0.8);
     width: 100%;
-    max-width: 1200px;
+    max-width: 1000px;
     padding: 20px;
     margin: 0 auto;
     flex: 1;
@@ -26,16 +29,18 @@ body {
 }
 
 header {
-    background: #007bff;
+    background: #A9B7B2;
     padding: 10px 20px;
-    color: white;
+    color: #4A4A4A;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 52.5%;
+    margin: 0 auto;
 }
 
 header nav a {
-    color: white;
+    color: #4A4A4A;
     text-decoration: none;
     margin: 0 10px;
     font-weight: bold;
@@ -212,11 +217,13 @@ button:hover {
 }
 
 footer {
-    background: #007bff;
-    color: white;
+    background: #A9B7B2;
+    color: #4A4A4A;
     text-align: center;
     padding: 5px;
     flex-shrink: 0;
+    width: 52.5%;
+    margin: 0 auto;
 }
 
 /* Add animations */
@@ -294,9 +301,17 @@ footer {
 }
 
 @keyframes starScale {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .book-title {
@@ -307,4 +322,51 @@ footer {
 #submitButton[disabled] {
     background-color: #ccc;
     cursor: not-allowed;
+}
+
+/* Styles specific to the login/register page */
+.login-page .container {
+    background-color: none;
+    width: 0;
+    max-width: 0;
+    padding: 0;
+    margin: 0 auto;
+    flex: 1;
+    justify-content: center;
+}
+
+.login-page header {
+    background: #E3C8C0;
+    padding: 10px 20px;
+    color: #4A4A4A;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 34.2%;
+    margin: 0 auto;
+}
+
+.login-page header nav a {
+    color: #4A4A4A;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.login-page header nav a:hover {
+    text-decoration: underline;
+}
+
+.login-page header .welcome {
+    font-size: 16px;
+}
+
+.login-page footer {
+    background: #E3C8C0;
+    color: #4A4A4A;
+    text-align: center;
+    padding: 5px;
+    flex-shrink: 0;
+    width: 34.2%;
+    margin: 0 auto;
 }

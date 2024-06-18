@@ -13,7 +13,7 @@ $controller->login();
     <title>Login</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-<body>
+<body class="login-page">
     <?php include '../templates/header.php'; ?>
     <div class="container">
         <div class="login-container">
