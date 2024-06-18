@@ -35,7 +35,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 52.5%;
+    width: 100%;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -215,7 +216,8 @@ footer {
     text-align: center;
     padding: 5px;
     flex-shrink: 0;
-    width: 52.5%;
+    width: 100%;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -335,7 +337,8 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 34.2%;
+    width: 100%;
+    max-width: 655px;
     margin: 0 auto;
 }
 
@@ -360,7 +363,8 @@ footer {
     text-align: center;
     padding: 5px;
     flex-shrink: 0;
-    width: 34.2%;
+    width: 100%;
+    max-width: 655px;
     margin: 0 auto;
 }
 
