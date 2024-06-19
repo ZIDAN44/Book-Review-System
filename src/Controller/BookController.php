@@ -83,4 +83,20 @@ class BookController
             ShowError::show404Page();
         }
     }
+
+    public function searchBooks($query)
+    {
+        global $pdo;
+        try {
+            $stmt = $pdo->prepare('SELECT * FROM books WHERE title LIKE ? OR author LIKE ? OR genre LIKE ?');
+            $searchTerm = "%" . $query . "%";
+            $stmt->execute([$searchTerm, $searchTerm, $searchTerm]);
+            $results = $stmt->fetchAll();
+
+            return $results; // Return results even if empty
+        } catch (PDOException $e) {
+            BookLogger::logError($e);
+            ShowError::show404Page();
+        }
+    }
 }

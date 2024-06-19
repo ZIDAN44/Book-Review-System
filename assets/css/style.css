@@ -440,3 +440,45 @@ footer {
     font-size: 14px;
     color: #555;
 }
+
+/* Styles specific to the search form */
+.search-form {
+    margin-bottom: 5px;
+}
+
+.search-form input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 250px;
+    margin-right: 10px;
+    box-sizing: border-box;
+}
+
+.search-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #599e59;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-form button:hover {
+    background-color: #4cae4c;
+}
+
+.no-books-found {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #292929;
+    color: #d9534f;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
